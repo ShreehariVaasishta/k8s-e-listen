@@ -5,7 +5,7 @@ This Go program is designed to monitor events in a Kubernetes cluster. It allows
 ## Features
 
 ### Existing Features
-- **Event Filtering:** Users can filter events based on their type (e.g., `Normal`, `Warning`), reason, and namespace. This allows for focused monitoring of events that are of specific interest or importance.
+- **Event Filtering:** filter events based on their type (e.g., `Normal`, `Warning`), reason, and namespace. This allows for focused monitoring of events that are of specific interest or importance.
 - **Custom Kubernetes Context:** The program can use a specified kubeconfig file, allowing it to be used in different Kubernetes environments or contexts.
 - **Simple CLI Usage:** Easily run the program with command-line arguments to set your desired filters.
 
