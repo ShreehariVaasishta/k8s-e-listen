@@ -1,67 +1,62 @@
-# Kubernetes Event Listener in Go
+# Kubernetes Event Listener
 
-This project provides a simple Kubernetes event listener written in Go. It watches for events in a specified Kubernetes namespace and can filter these events based on type, reason, and context.
-
-## Prerequisites
-
-- Go (1.13 or higher)
-- Access to a Kubernetes cluster
-- kubectl configured with access to your cluster
-
-## Installation
-
-Clone the repository to your local machine:
-
-```bash
-git clone https://github.com/your-username/k8s-event-listener.git
-cd k8s-event-listener
-```
-
-## Usage
-
-Run the program using the following command:
-
-
-```
-go run main.go
-```
-
-You can specify a Kubernetes context (if different from your current context) by using the -context flag:
-
-```
-go run main.go -context your_context_name
-```
-
-## Configuration
-
-- namespace: Set to default. Modify in the code to watch events in a different namespace.
-- eventType: Set to Normal as the default event type. Change this to watch for different types of events.
-- eventReason: Set to an empty string, meaning it will accept all event reasons. Specify a reason to filter events further.
+This Go program is designed to monitor events in a Kubernetes cluster. It allows users to specify filters such as event type, reason, and namespace to target specific events. This tool is particularly useful for developers and system administrators who need to keep an eye on specific occurrences within their Kubernetes environment.
 
 ## Features
 
-- [x] Real-time monitoring of Kubernetes events.
-- [x] Filters events by type, reason, and namespace.
-- [x] Optional flag to specify a Kubernetes context.
-- [x]  Basic error handling.
+### Existing Features
+- **Event Filtering:** Users can filter events based on their type (e.g., `Normal`, `Warning`), reason, and namespace. This allows for focused monitoring of events that are of specific interest or importance.
+- **Custom Kubernetes Context:** The program can use a specified kubeconfig file, allowing it to be used in different Kubernetes environments or contexts.
+- **Simple CLI Usage:** Easily run the program with command-line arguments to set your desired filters.
 
-## Future Enhancements
+### Future Features/Enhancements
+- **Enhanced Filtering Options:** Future versions could include more granular filters, such as filtering by specific resource types or labels.
+- **Real-Time Alerts:** Integration with notification systems to send real-time alerts based on certain event triggers.
+- **Web Dashboard:** A web-based UI to view and filter events in real-time, enhancing the usability for those who prefer graphical interfaces.
+- **Persistent Logging:** Option to log events to a file or a database for historical analysis and auditing purposes.
+- **Cluster-Wide Monitoring:** Extend functionality to support monitoring events across multiple clusters simultaneously.
 
-- [ ] Enhanced error handling and logging.
-- [ ] Configurable filters via command-line arguments or a configuration file.
-- [ ] Support for multiple namespaces.
-- [ ] Integration with notification systems (e.g., email, Slack).
-- [ ] Deployment as a Kubernetes pod.
-- [ ] User authentication and authorization for secure access.
+## Getting Started
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+### Prerequisites
+- Go (version 1.x or later)
+- Access to a Kubernetes cluster with `kubectl` configured
+
+### Installation
+1. Clone the repository or download the source code.
+2. Navigate to the project directory.
+3. Compile the program (optional):
+   ```bash
+   go build
+   ```
+
+Run the program with the desired flags.
+
+## Usage
+Run the program using the following command format:
+
+```
+go run main.go [--kubeconfig=path/to/kubeconfig] [--namespace=namespace] [--event-type=event_type] [--reason=reason]
+```
+
+### Flags
+- **--kubeconfig:** Path to the kubeconfig file (optional)
+- **--namespace:** Kubernetes namespace to monitor (default: default)
+- **--event-type:** Type of event to filter (default: Normal)
+- **--reason:** Specific reason to filter events (optional)
+
+Example:
+
+```bash
+go run main.go --namespace=my-namespace --event-type=Warning --reason=PodCrashLoopBackOff
+```
 
 ## Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
 
-Support
-If you have any issues or feature requests, please file an issue on the GitHub repository.
+Contributions to this project are welcome! Please fork the repository and submit a pull request with your proposed changes or enhancements.
 
-Acknowledgments
-Thanks to the Kubernetes and Go communities for their excellent resources and documentation.
+## License
+
+This project is licensed under the MIT License.
+
+
